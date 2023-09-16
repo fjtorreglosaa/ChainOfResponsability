@@ -1,9 +1,4 @@
-﻿using ChainOfResponsability.Application.Utilities.Constants;
-using ChainOfResponsability.Domain.Models;
-using ChainOfResponsability.Infrastructure.Contexts.Application;
-using ChainOfResponsability.Infrastructure.UnitOfWork;
-using ChainOfResponsability.SandBox;
-using System.Text.RegularExpressions;
+﻿using ChainOfResponsability.SandBox.Utilities;
 
 namespace ChainOfResponsability.Sandbox
 {
@@ -11,7 +6,9 @@ namespace ChainOfResponsability.Sandbox
     {
         public static void Main(string[] args)
         {
-            StatusSeeder.Seed();
+            ProcessOrderSandbox.Demo();
+
+            Console.WriteLine("--> COMPLETED <--");
         }
     }
 }

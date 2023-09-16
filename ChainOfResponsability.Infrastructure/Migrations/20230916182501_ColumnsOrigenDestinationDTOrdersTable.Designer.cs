@@ -4,6 +4,7 @@ using ChainOfResponsability.Infrastructure.Contexts.Application;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ChainOfResponsability.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    partial class ApplicationDBContextModelSnapshot : ModelSnapshot
+    [Migration("20230916182501_ColumnsOrigenDestinationDTOrdersTable")]
+    partial class ColumnsOrigenDestinationDTOrdersTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -122,6 +125,7 @@ namespace ChainOfResponsability.Infrastructure.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("LastModified")
@@ -131,9 +135,10 @@ namespace ChainOfResponsability.Infrastructure.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal?>("Price")
+                    b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
@@ -160,6 +165,7 @@ namespace ChainOfResponsability.Infrastructure.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("CustomerReference")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid?>("DeliveryId")
@@ -180,13 +186,14 @@ namespace ChainOfResponsability.Infrastructure.Migrations
                     b.Property<string>("Origen")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid?>("StatusID")
+                    b.Property<Guid>("StatusID")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Type")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid?>("UserId")
+                    b.Property<Guid>("UserId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
@@ -211,6 +218,9 @@ namespace ChainOfResponsability.Infrastructure.Migrations
                     b.Property<Guid>("ItemId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<int>("ItemQuantity")
+                        .HasColumnType("int");
+
                     b.Property<DateTime?>("LastModified")
                         .HasColumnType("datetime2");
 
@@ -222,9 +232,6 @@ namespace ChainOfResponsability.Infrastructure.Migrations
 
                     b.Property<Guid>("OrderId")
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -302,7 +309,9 @@ namespace ChainOfResponsability.Infrastructure.Migrations
                 {
                     b.HasOne("ChainOfResponsability.Domain.Models.Status", "Status")
                         .WithMany()
-                        .HasForeignKey("StatusID");
+                        .HasForeignKey("StatusID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Status");
                 });
@@ -310,7 +319,7 @@ namespace ChainOfResponsability.Infrastructure.Migrations
             modelBuilder.Entity("ChainOfResponsability.Domain.Models.OrderItem", b =>
                 {
                     b.HasOne("ChainOfResponsability.Domain.Models.Item", "Item")
-                        .WithMany("OrderItems")
+                        .WithMany()
                         .HasForeignKey("ItemId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -329,11 +338,6 @@ namespace ChainOfResponsability.Infrastructure.Migrations
             modelBuilder.Entity("ChainOfResponsability.Domain.Models.Invoice", b =>
                 {
                     b.Navigation("InvoiceItems");
-                });
-
-            modelBuilder.Entity("ChainOfResponsability.Domain.Models.Item", b =>
-                {
-                    b.Navigation("OrderItems");
                 });
 
             modelBuilder.Entity("ChainOfResponsability.Domain.Models.Order", b =>

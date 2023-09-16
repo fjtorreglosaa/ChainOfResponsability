@@ -6,6 +6,6 @@
         public Item Item { get; set; }
         public Guid OrdeId { get; set; }
         public Order Order { get; set; }
-        public int ItemQuantity { get; set; }
+        public int Quantity { get; set; }
     }
 }
