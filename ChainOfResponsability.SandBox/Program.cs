@@ -1,5 +1,9 @@
-﻿using ChainOfResponsability.Infrastructure.Contexts.Application;
+﻿using ChainOfResponsability.Application.Utilities.Constants;
+using ChainOfResponsability.Domain.Models;
+using ChainOfResponsability.Infrastructure.Contexts.Application;
 using ChainOfResponsability.Infrastructure.UnitOfWork;
+using ChainOfResponsability.SandBox;
+using System.Text.RegularExpressions;
 
 namespace ChainOfResponsability.Sandbox
 {
@@ -7,22 +11,7 @@ namespace ChainOfResponsability.Sandbox
     {
         public static void Main(string[] args)
         {
-            var contexto = new ApplicationDBContext();
-            //var statusRepository = new StatusRepository(contexto);
-            var unitOfWork = new UnitOfWork(contexto);
-
-            //var statuses = contexto.Statuses.ToList();
-
-            //var statuses = statusRepository.GetAll().ToList();
-
-            var statuses = unitOfWork.Statuses.GetAll().ToList();
-
-            foreach (var status in statuses)
-            {
-                Console.WriteLine($"{status.Name}");
-            }
-
-            Console.ReadKey();
+            StatusSeeder.Seed();
         }
     }
 }

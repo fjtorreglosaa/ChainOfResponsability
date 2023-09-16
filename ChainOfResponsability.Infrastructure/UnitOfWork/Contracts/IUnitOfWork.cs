@@ -11,7 +11,8 @@ namespace ChainOfResponsability.Infrastructure.UnitOfWork.Contracts
         IStatusRepository Statuses { get; }
         IInvoiceItemRepository InvoiceItems { get; }
 
-        Task<int> Commit();
+        Task<int> CommitAsync();
+        int Commit();
         void Dispose();
     }
 }

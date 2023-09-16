@@ -26,9 +26,14 @@ namespace ChainOfResponsability.Infrastructure.UnitOfWork
             InvoiceItems = new InvoiceItemRepository(dbContext);
         }
 
-        public async Task<int> Commit()
+        public async Task<int> CommitAsync()
         {
             return await _dbContext.SaveChangesAsync();
+        }
+
+        public int Commit()
+        {
+            return _dbContext.SaveChanges();
         }
 
         public void Dispose()

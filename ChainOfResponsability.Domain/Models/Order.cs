@@ -13,7 +13,6 @@
         public string Type { get; set; }
         public string CustomerReference { get; set; }
         public Guid UserId { get; set; }
-        public decimal Amount { get; set; }
         public Guid? DeliveryId { get; set; }
         public Guid StatusID { get; set; }
         public Status Status { get; set; }
