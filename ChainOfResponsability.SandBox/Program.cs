@@ -1,4 +1,5 @@
-﻿using ChainOfResponsability.SandBox.Utilities;
+﻿using ChainOfResponsability.SandBox.Seeders;
+using ChainOfResponsability.SandBox.Utilities;
 
 namespace ChainOfResponsability.Sandbox
 {
@@ -6,9 +7,15 @@ namespace ChainOfResponsability.Sandbox
     {
         public static void Main(string[] args)
         {
+            StatusSeeder.Seed();
+
+            ItemSeeder.Seed();
+
+            CreateOrderSandbox.Demo();
+
             ProcessOrderSandbox.Demo();
 
-            Console.WriteLine("--> COMPLETED <--");
+            Console.WriteLine("--> TUTORIAL COMPLETED <--");
         }
     }
 }
