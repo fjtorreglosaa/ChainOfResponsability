@@ -18,6 +18,7 @@ Use the following commands to setup the environment
 
 What we will learn?
 
+- Docker (Image, Container, Volume)
 - Clean Architecture (Drive Domain Design)
 - Entity Framework
 - Repository pattern
