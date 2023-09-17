@@ -15,3 +15,11 @@ Use the following commands to setup the environment
 
 - dotnet ef migrations add InitialModel -c ApplicationIdentityDbContext -p ChainOfResponsability.Infrastructure -o IdentityMigrations
 - dotnet ef database update -c ApplicationIdentityDbContext -p ChainOfResponsability.Infrastructure
+
+What we will learn?
+
+- Clean Architecture (Drive Domain Design)
+- Entity Framework
+- Repository
+- Unit of work
+- Chain of responsability
