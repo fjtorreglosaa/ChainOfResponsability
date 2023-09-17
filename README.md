@@ -20,6 +20,6 @@ What we will learn?
 
 - Clean Architecture (Drive Domain Design)
 - Entity Framework
-- Repository
-- Unit of work
-- Chain of responsability
+- Repository pattern
+- Unit of work pattern
+- Chain of responsability pattern
