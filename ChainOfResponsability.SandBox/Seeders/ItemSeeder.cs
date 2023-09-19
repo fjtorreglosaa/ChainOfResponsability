@@ -7,7 +7,7 @@ namespace ChainOfResponsability.SandBox.Seeders
     {
         public static Item CHAIN = new Item
         {
-            Id = Guid.Parse("00000000-0000-0000-0000-000000000001"),
+            Id = Guid.Parse("8380E6A5-C0F9-4B0C-8A8E-7AB89FBADCA9"),
             Name = "Chain",
             Price = (decimal)1.52,
         };
